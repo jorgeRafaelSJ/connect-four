@@ -1,13 +1,17 @@
 body {
-	background-color: #eee;
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
 }
-.container {
-	padding: 0px;
+.main-view {
+	padding: 0;
 }
-.board { 
-	margin-top: 50px; 
+.table { 
 	width: 625px;
 	background-color: #F8DA3B;
+}
+.board {
+	margin-top: 100px !important;
+	vertical-align: center;
 }
 td {
 	height: 80px;
@@ -33,17 +37,48 @@ td.col6 {
 .turn-display {
 	text-align: center;
 	height: 140px;
+	border-bottom: 1px solid #666;
+	background-color: #ddd;
 }
 .result-display {
 	text-align: center;
 	height: 140px;
+	border-bottom: 1px solid #666;
+	background-color: #ddd;
 }
 footer {
 	text-align: center;
 	margin-top: 50px;
 	background-color: #ddd;
 	padding: 20px 0;
+	border-top: 1px solid #666;
 }
-#turn-text {
+.turn-text {
 	color: red;
+	margin-top: 45px;
+}
+.red-winner {
+	color: red;
+}
+.black-winner {
+	color: black;
+}
+.btn-default {
+	margin-top: 10px;
+	font-size: 20px;
+	background-color: #bbb;
+	border: 1px solid #000;
+	border-radius: 4px;
+	color: #333;
+}
+.btn-default:hover {
+	border: 1px solid #00B6EB;
+	background-color: rgba(0,154,198,0.1);
+	color: #007799;
+}
+.instructions {
+	margin-top: 100px;
+}
+ul {
+	list-style: none;
 }
