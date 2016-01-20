@@ -1,12 +1,19 @@
-table { 
-	margin-top: 100px; 
+.container {
+	padding: 0px;
 }
-td { 
-	width: 50px; 
-	height: 50px; 
-	-moz-border-radius: 25px; 
-	/*-webkit-border-radius: 25px; */
-	border-radius: 25px; 
+.board { 
+	margin-top: 50px; 
+	width: 625px;
+	background-color: #F8DA3B;
+}
+td {
+	height: 80px;
+	width: 89px; 
+	-moz-border-radius: 200px; 
+	-webkit-border-radius: 200px; 
+	border-radius: 200px; 
+	background-color: white;
+	border-color: #F8DA3B !important;
 }
 .red { 
 	background-color: red; 
@@ -14,12 +21,10 @@ td {
 .black { 
 	background-color: black; 
 }
-.gameover td { 
-	opacity: .5; 
+td.col1 {
+	border-left: 10px solid #00B6EB !important;
 }
-.gameover td.win { 
-	opacity: 1; 
+td.col7 {
+	border-right: 10px solid #00B6EB !important;
 }
-.hovercol {
-	border:3px solid black;
-}
+
