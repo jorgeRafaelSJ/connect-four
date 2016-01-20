@@ -19,27 +19,27 @@ angular.module('cuatro')
 		function turn(){
 			if(turnCount % 2 === 0){
 				$scope.player = "red";
-				$('#turn-text').css('color',"red");
+				$('.turn-text').css('color',"red");
 			} else {
 				$scope.player = "black";
-				$('#turn-text').css('color',"black");
+				$('.turn-text').css('color',"black");
 			}
 			turnCount++;
 		}
 
 		function diagonalRightWin (row, col) {
 			// bottom left to top right with current play as fourth space
-			if(col > 2 && row < 3 && $scope.board[row + 3][col - 3] == $scope.player && $scope.board[row + 2][col - 2] == $scope.player && $scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player) {
+			if(row < 3 && col > 2 && $scope.board[row + 3][col - 3] == $scope.player && $scope.board[row + 2][col - 2] == $scope.player && $scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player) {
 				$scope.winner = $scope.player;
 				$scope.game = false;
 			}
 			// with current play as third space
-			else if(col > 1 && col < 6 && row < 4 && row > 0 && $scope.board[row + 2][col - 2] == $scope.player && $scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player && $scope.board[row - 1][col + 1] == $scope.player) {
+			else if(row < 4 && row > 0 && col < 6 && col > 1 && $scope.board[row + 2][col - 2] == $scope.player && $scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player && $scope.board[row - 1][col + 1] == $scope.player) {
 				$scope.winner = $scope.player;
 				$scope.game = false;
 			}
 			// with current play as second space
-			else if(col > 1 && col < 5 && row < 5 && row > 1 && $scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player && $scope.board[row - 1][col + 1] == $scope.player && $scope.board[row - 2][col + 2] == $scope.player) {
+			else if(row < 5 && row > 1 && col < 5 && col > 1 &&$scope.board[row + 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player && $scope.board[row - 1][col + 1] == $scope.player && $scope.board[row - 2][col + 2] == $scope.player) {
 				$scope.winner = $scope.player;
 				$scope.game = false;
 			}
@@ -49,6 +49,7 @@ angular.module('cuatro')
 				$scope.game = false;
 			}
 		}	
+
 		function diagonalLeftWin (row, col) {
 			// top left to bottom right with current play as fourth space
 			if(row > 2 && col > 2 && $scope.board[row - 3][col - 3] == $scope.player && $scope.board[row - 2][col - 2] == $scope.player && $scope.board[row - 1][col - 1] == $scope.player && $scope.board[row][col] == $scope.player) {
@@ -71,6 +72,7 @@ angular.module('cuatro')
 				$scope.game = false;
 			}
 		}
+
 		function horizontalWin (row, col) {
 			// fourth place
 			if($scope.board[row][col] == $scope.player && $scope.board[row][col - 1] == $scope.player && $scope.board[row][col - 2] == $scope.player && $scope.board[row][col - 3] == $scope.player) {
@@ -93,6 +95,7 @@ angular.module('cuatro')
 				$scope.game = false;
 			}
 		}
+
 		function verticalWin (row, col) {
 			// check from top to bottom
 			// need to check that row < 3 because first because there cant be vertical win with less than 4 rows in play.
@@ -102,11 +105,27 @@ angular.module('cuatro')
 			}
 		}
 
+		function checkForTie () {
+			var playedCells = 0;
+			for(var i = 0; i < $scope.board.length; i++) {
+				for(var j = 0; j < $scope.board[i].length; j++) {
+					if($scope.board[i][j] !== null) {
+						playedCells += 1;
+					}
+				}
+			}
+			if(playedCells == 42) {
+				$scope.winner = "There is a tie, no";
+				$scope.game = false;
+			}
+		}
+
 		function getWinner (row, col) {
 			diagonalRightWin(row, col);
 			diagonalLeftWin(row, col);
 			horizontalWin(row, col);
 			verticalWin(row, col);
+			checkForTie();
 			return;
 		}
 
@@ -152,6 +171,7 @@ angular.module('cuatro')
 			}
 		};
 
+		// resets board 
 		$scope.playAgain = function() {
 			$("td").removeClass("red").css('background-color', "white");
 			$("td").removeClass("black");
@@ -164,6 +184,9 @@ angular.module('cuatro')
 			[null, null, null, null, null, null, null],
 			[null, null, null, null, null, null, null],
 			];
+			$scope.player = "red";
+			$('.turn-text').css('color',"red");
+			turnCount = 1;
 			$scope.game = true;
 		};
 

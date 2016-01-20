@@ -1,71 +1,99 @@
 <!-- GAME BOARD -->
-<div class="col-xs-12">
+<div class="main-view col-xs-12">
 
     <div ng-hide="game" class="col-xs-12 result-display">
-         <h1>{{winner}} player wins</h1>
+         <h1 class="{{winner}}-winner">{{winner}} player wins!</h1>
          <button class="btn btn-default" ng-click="playAgain()">Play Again</button>
     </div>
 
     <div ng-show="game" class="col-xs-12 turn-display">
-         <h1 id="turn-text">{{player}} player's turn!</h1>
-    </div>    
+         <h1 class="turn-text">{{player}} player's turn</h1>
+    </div>
 
-    <table align="center" class="board table table-bordered" cellspacing="5" cellpadding="0" id="board">
-        <tr id="row0">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-        <tr id="row1">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-        <tr id="row2">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-        <tr id="row3">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-        <tr id="row4">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-        <tr id="row5">
-            <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
-            <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
-            <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
-            <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
-            <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
-            <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
-            <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
-        </tr>
-    </table>
+    <div class="instructions col-lg-3 col-md-2 col-sm-12">
+        <p>Welcome to <b>Cuatro</b></p>
+
+        Be the first player to get four of your checkers in a row - horizontally, vertically or diagonally.
+
+        <div ng-hide="game" class="col-xs-12">
+             <h1 class="{{winner}}-winner">{{winner}} player wins!</h1>
+             <button class="btn btn-default" ng-click="playAgain()">Play Again</button>
+        </div>
+
+        <div ng-show="game" class="col-xs-12">
+             <h1 class="turn-text">{{player}} player's turn</h1>
+        </div>
+
+    </div>    
+    <div class="board col-lg-6 col-md-8 col-sm-12">
+        <table align="center" class="table table-bordered" cellspacing="5" cellpadding="0">
+            <tr id="row0">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+            <tr id="row1">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+            <tr id="row2">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+            <tr id="row3">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+            <tr id="row4">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+            <tr id="row5">
+                <td class="col0 empty" ng-click="lowestCellinCol(0)"></td>
+                <td class="col1 empty" ng-click="lowestCellinCol(1)"></td>
+                <td class="col2 empty" ng-click="lowestCellinCol(2)"></td>
+                <td class="col3 empty" ng-click="lowestCellinCol(3)"></td>
+                <td class="col4 empty" ng-click="lowestCellinCol(4)"></td>
+                <td class="col5 empty" ng-click="lowestCellinCol(5)"></td>
+                <td class="col6 empty" ng-click="lowestCellinCol(6)"></td>
+            </tr>
+        </table>
+    </div>
+        <div class="instructions col-lg-3 col-md-2 col-sm-12">
+            <h4>Rules</h4>
+            
+            <ul>
+                <li>Red plays first.</li>
+                <li>Each player in his turn selects a column in which the lowest available space will be filled.</li>
+                <li>The turns alternate until one of the players gets four checkers of his colour in a row. The four in a row can be horizontal, vertical, or diagonal.</li>
+                <li>The first player to get four in a row wins.</li>
+                <li>If the board is filled with pieces and neither player has 4 in a row, then the game is a tie.</li>
+            </ul>
+        </div>
 </div>
 
 
