@@ -1,16 +1,22 @@
-body {
-	background-color: #fff;
+html,body, div{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 	font-family: 'Open Sans', sans-serif;
 }
 .main-view {
-	padding: 0;
+	width: 100%;
+	background-color: rgba(174, 188, 33,0.3);
+	padding-bottom: 50px;
 }
+/*table and board*/
 .table { 
 	width: 625px;
 	background-color: #F8DA3B;
 }
 .board {
-	margin-top: 100px !important;
+	margin-top: 70px !important;
 	vertical-align: center;
 }
 td {
@@ -22,36 +28,13 @@ td {
 	background-color: white;
 	border-color: #F8DA3B !important;
 }
+
+/*dynamic game classes*/
 .red { 
 	background-color: red; 
 }
 .black { 
 	background-color: black; 
-}
-td.col0 {
-	border-left: 10px solid #00B6EB !important;
-}
-td.col6 {
-	border-right: 10px solid #00B6EB !important;
-}
-.turn-display {
-	text-align: center;
-	height: 140px;
-	border-bottom: 1px solid #666;
-	background-color: #ddd;
-}
-.result-display {
-	text-align: center;
-	height: 140px;
-	border-bottom: 1px solid #666;
-	background-color: #ddd;
-}
-footer {
-	text-align: center;
-	margin-top: 50px;
-	background-color: #ddd;
-	padding: 20px 0;
-	border-top: 1px solid #666;
 }
 .turn-text {
 	color: red;
@@ -63,22 +46,86 @@ footer {
 .black-winner {
 	color: black;
 }
+
+/*blue borders on side of board*/
+td.col0 {
+	border-left: 10px solid #00B6EB !important;
+}
+td.col6 {
+	border-right: 10px solid #00B6EB !important;
+}
+
+/*Top Bar and Footer*/
+.top-bar {
+	text-align: center;
+	height: 100px;
+	border-bottom: 1px solid #00B6EB;
+	background-color: rgba(174, 188, 33,0.5);
+	margin-left: 0px;
+}
+.title {
+	margin-top: 25px;
+	font-size: 38px;
+	color: #00B6EB;
+}
+.git-hub {
+	margin-top: 30px !important;
+}
+footer {
+	text-align: center;
+	background-color: rgba(174, 188, 33,0.5);
+	padding: 20px 0;
+	border-top: 1px solid #00B6EB;
+}
+
+/*Buttons*/
+a {
+	color: #333 !important;
+}
 .btn-default {
 	margin-top: 10px;
-	font-size: 20px;
-	background-color: #bbb;
-	border: 1px solid #000;
-	border-radius: 4px;
+	font-size: 16px;
+	background-color: rgb(174, 188, 33);
+	border: 1px solid #00B6EB;
+	border-radius: 0px;
 	color: #333;
+	margin-bottom: 10px;
 }
 .btn-default:hover {
-	border: 1px solid #00B6EB;
-	background-color: rgba(0,154,198,0.1);
+	border: 1px solid yellow;
+	background-color: rgba(174, 188, 33,0.5);
 	color: #007799;
 }
+
+/*Left side and right side of the board*/
 .instructions {
-	margin-top: 100px;
+	margin-top: 70px;
+}
+.left-dashboard {
+	margin-top: 70px;
+	text-align: center;
 }
 ul {
 	list-style: none;
+	padding-left: 0;
+}
+li {
+	margin-top: 5px;
+	font-size: 12px;
+}
+.hovering {
+	border-left: 3px solid #444 !important;
+	border-right: 3px solid #444 !important;	
+}
+@media(max-width: 1000px) {
+	.title {
+		font-size: 30px;
+		margin-top: 30px;
+	}
+}
+@media(max-width: 800px) {
+	.title {
+		font-size: 25px;
+		margin-top: 33px;
+	}
 }

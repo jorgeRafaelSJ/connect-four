@@ -190,4 +190,49 @@ angular.module('cuatro')
 			$scope.game = true;
 		};
 
+
+		// adds hovering effect to column
+		// THERE HAS TO BE A BETTER WAY TO DO THIS 
+		// things I've tried:
+		// [class^=col] in  -- but then cant use this because it only selects hovered td(table data)
+		// ng-hover with function sending col # and adding jQuery here -- does not work at all
+		// 
+
+		$(".col0").on('mouseenter', function () {
+			$(".col0").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col0").removeClass('hovering');
+		});
+		$(".col1").on('mouseenter', function () {
+			$(".col1").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col1").removeClass('hovering');
+		});
+		$(".col2").on('mouseenter', function () {
+			$(".col2").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col2").removeClass('hovering');
+		});
+		$(".col3").on('mouseenter', function () {
+			$(".col3").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col3").removeClass('hovering');
+		});
+		$(".col4").on('mouseenter', function () {
+			$(".col4").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col4").removeClass('hovering');
+		});
+		$(".col5").on('mouseenter', function () {
+			$(".col5").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col5").removeClass('hovering');
+		});
+		$(".col6").on('mouseenter', function () {
+			$(".col6").addClass('hovering');
+		}).on('mouseleave', function () {
+			$(".col6").removeClass('hovering');
+		});
+
+
 }]);
