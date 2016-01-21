@@ -1,12 +1,15 @@
 angular.module('cuatro')
-	.controller('GameController', ['$scope','Board','Game', function ($scope, Board, Game) {
+	.controller('GameController', ['$scope','boardFactory', function ($scope, boardFactory) {
 		
 		var turnCount = 1;
 		// red starts the game
 		$scope.player = "red";
 		$scope.winner = null;
 		$scope.game = true;
-		Board.gameBoard = Board.setEmpty();
+		var board = new boardFactory.Board(7,6);
+		board.initiate();
+
+		
 
 		// switches the turn after every move
 		function turn(){
@@ -28,9 +31,9 @@ angular.module('cuatro')
 					// displays in dom
 					$("#row5 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
 					// puts into array board to be used for winner function 
-					Board.gameBoard[5][col] = $scope.player;
+					board.gameBoard[5][col] = $scope.player;
 					// checks if the current move is a winning one
-					if(Game.winner(5, col, $scope.player)) {
+					if(board.winner(5, col, $scope.player)) {
 						// if there is a winner set it to the current player because this is checked on every turn
 						$scope.winner = $scope.player;
 						// end the game
@@ -40,40 +43,40 @@ angular.module('cuatro')
 					turn();
 				} else if($("#row4 .col"+ col).hasClass("empty")) {
 					$("#row4 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					Board.gameBoard[4][col] = $scope.player;
-					if(Game.winner(4, col, $scope.player)) {
+					board.gameBoard[4][col] = $scope.player;
+					if(board.winner(4, col, $scope.player)) {
 						$scope.winner = $scope.player;
 						$scope.game = false;
 					}
 					turn();
 				} else if($("#row3 .col"+ col).hasClass("empty")) {
 					$("#row3 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					Board.gameBoard[3][col] = $scope.player;
-					if(Game.winner(3, col, $scope.player)) {
+					board.gameBoard[3][col] = $scope.player;
+					if(board.winner(3, col, $scope.player)) {
 						$scope.winner = $scope.player;
 						$scope.game = false;
 					}
 					turn();
 				} else if($("#row2 .col"+ col).hasClass("empty")) {
 					$("#row2 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					Board.gameBoard[2][col] = $scope.player;
-					if(Game.winner(2, col, $scope.player)) {
+					board.gameBoard[2][col] = $scope.player;
+					if(board.winner(2, col, $scope.player)) {
 						$scope.winner = $scope.player;
 						$scope.game = false;
 					}
 					turn();
 				} else if($("#row1 .col"+ col).hasClass("empty")) {
 					$("#row1 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					Board.gameBoard[1][col] = $scope.player;
-					if(Game.winner(1, col, $scope.player)) {
+					board.gameBoard[1][col] = $scope.player;
+					if(board.winner(1, col, $scope.player)) {
 						$scope.winner = $scope.player;
 						$scope.game = false;
 					}
 					turn();
 				} else if($("#row0 .col"+ col).hasClass("empty")) {
 					$("#row0 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					Board.gameBoard[0][col] = $scope.player;
-					if(Game.winner(0, col, $scope.player)) {
+					board.gameBoard[0][col] = $scope.player;
+					if(board.winner(0, col, $scope.player)) {
 						$scope.winner = $scope.player;
 						$scope.game = false;
 					}
