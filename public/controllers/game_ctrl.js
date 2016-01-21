@@ -31,7 +31,9 @@ angular.module('cuatro')
 					Board.gameBoard[5][col] = $scope.player;
 					// checks if the current move is a winning one
 					if(Game.winner(5, col, $scope.player)) {
+						// if there is a winner set it to the current player because this is checked on every turn
 						$scope.winner = $scope.player;
+						// end the game
 						$scope.game = false;
 					}
 					// changes the turn
@@ -82,12 +84,15 @@ angular.module('cuatro')
 
 		// resets board 
 		$scope.playAgain = function() {
+			// resets table on view
 			$("td").removeClass("red").css('background-color', "white");
 			$("td").removeClass("black");
 			$("td").addClass("empty");
+			// changes the color of the turn text
+			$('.turn-text').css('color',"red");
+
 			Board.gameBoard = Board.setEmpty();
 			$scope.player = "red";
-			$('.turn-text').css('color',"red");
 			turnCount = 1;
 			$scope.game = true;
 		};
