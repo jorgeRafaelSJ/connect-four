@@ -1,4 +1,4 @@
-angular.module('cuatro').service('Board', function() {
+angular.module('cuatro').factory('Board', function() {
 	return {
 		setEmpty: function () {
 			return [
