@@ -1,7 +1,5 @@
 angular.module('cuatro')
-	.controller('GameController', ['$scope','boardFactory', function ($scope, boardFactory) {
-		
-		var turnCount = 1;
+	.controller('GameController', ['$scope','boardFactory', 'playAgain', 'colHover', function ($scope, boardFactory, playAgain, colHover) {
 		// red starts the game
 		$scope.player = "red";
 		$scope.winner = null;
@@ -9,138 +7,30 @@ angular.module('cuatro')
 		var board = new boardFactory.Board(7,6);
 		board.initiate();
 
-		
-
-		// switches the turn after every move
-		function turn(){
-			if(turnCount % 2 === 0){
-				$scope.player = "red";
-				$('.turn-text').css('color',"red");
-			} else {
-				$scope.player = "black";
-				$('.turn-text').css('color',"black");
-			}
-			turnCount++;
-		}
-
-		// when a column is clicked it will place the current player's color
-		// in the lowest cell possible of that column
-		$scope.lowestCellinCol = function (col) {
-			if($scope.game === true) {
-				if($("#row5 .col"+ col).hasClass("empty")) {
-					// displays in dom
-					$("#row5 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					// puts into array board to be used for winner function 
-					board.gameBoard[5][col] = $scope.player;
-					// checks if the current move is a winning one
-					if(board.winner(5, col, $scope.player)) {
-						// if there is a winner set it to the current player because this is checked on every turn
-						$scope.winner = $scope.player;
-						// end the game
-						$scope.game = false;
-					}
-					// changes the turn
-					turn();
-				} else if($("#row4 .col"+ col).hasClass("empty")) {
-					$("#row4 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					board.gameBoard[4][col] = $scope.player;
-					if(board.winner(4, col, $scope.player)) {
-						$scope.winner = $scope.player;
-						$scope.game = false;
-					}
-					turn();
-				} else if($("#row3 .col"+ col).hasClass("empty")) {
-					$("#row3 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					board.gameBoard[3][col] = $scope.player;
-					if(board.winner(3, col, $scope.player)) {
-						$scope.winner = $scope.player;
-						$scope.game = false;
-					}
-					turn();
-				} else if($("#row2 .col"+ col).hasClass("empty")) {
-					$("#row2 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					board.gameBoard[2][col] = $scope.player;
-					if(board.winner(2, col, $scope.player)) {
-						$scope.winner = $scope.player;
-						$scope.game = false;
-					}
-					turn();
-				} else if($("#row1 .col"+ col).hasClass("empty")) {
-					$("#row1 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					board.gameBoard[1][col] = $scope.player;
-					if(board.winner(1, col, $scope.player)) {
-						$scope.winner = $scope.player;
-						$scope.game = false;
-					}
-					turn();
-				} else if($("#row0 .col"+ col).hasClass("empty")) {
-					$("#row0 .col"+ col).css('background-color', $scope.player).removeClass("empty").addClass($scope.player);
-					board.gameBoard[0][col] = $scope.player;
-					if(board.winner(0, col, $scope.player)) {
-						$scope.winner = $scope.player;
-						$scope.game = false;
-					}
-					turn();
-				}
+		// goes off when the player clicks on a column
+		$scope.makeMove = function (col) {
+			board.lowestCellinCol(col);
+			$scope.player = board.playerInTurn.color;
+			if(board.winner){
+				$scope.game = false;
+				$scope.winner = board.winner;
 			}
 		};
 
-		// resets board 
+		// resets board and turns in the object
 		$scope.playAgain = function() {
-			// resets table on view
-			$("td").removeClass("red").css('background-color', "white");
-			$("td").removeClass("black");
-			$("td").addClass("empty");
-			// changes the color of the turn text
-			$('.turn-text').css('color',"red");
-
-			Board.gameBoard = Board.setEmpty();
+			// resets board on the dom
+			playAgain.reset();
 			$scope.player = "red";
-			turnCount = 1;
 			$scope.game = true;
+			// makes new instance of board / new game
+			board = new boardFactory.Board(7,6);
+			board.initiate();
 		};
 
-
-		// adds hovering effect to column
-		// THERE HAS TO BE A BETTER WAY TO DO THIS 
-		// things I've tried:
-		// [class^=col] in  -- but then cant use this because it only selects hovered td(table data)
-		// ng-hover with function sending col # and adding jQuery here -- does not work at all
-		// 
-
-		$(".col0").on('mouseenter', function () {
-			$(".col0").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col0").removeClass('hovering');
-		});
-		$(".col1").on('mouseenter', function () {
-			$(".col1").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col1").removeClass('hovering');
-		});
-		$(".col2").on('mouseenter', function () {
-			$(".col2").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col2").removeClass('hovering');
-		});
-		$(".col3").on('mouseenter', function () {
-			$(".col3").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col3").removeClass('hovering');
-		});
-		$(".col4").on('mouseenter', function () {
-			$(".col4").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col4").removeClass('hovering');
-		});
-		$(".col5").on('mouseenter', function () {
-			$(".col5").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col5").removeClass('hovering');
-		});
-		$(".col6").on('mouseenter', function () {
-			$(".col6").addClass('hovering');
-		}).on('mouseleave', function () {
-			$(".col6").removeClass('hovering');
-		});
+		$scope.hovering = function(col) {
+			colHover.hovering(col);
+		};		
 }]);
+
+

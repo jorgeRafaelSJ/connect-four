@@ -1,10 +1,15 @@
-angular.module('cuatro').factory('boardFactory', function() {
+angular.module('cuatro').factory('boardFactory',['playerFactory', function(playerFactory) {
 
 	function Board(rows,columns) {
 
 			this.gameBoard = [];
 			this.rows = rows;
 			this.columns = columns;
+			this.playCount = 0;
+			this.winner = null;
+			this.player1 = new playerFactory.player("red", true);
+			this.player2 = new playerFactory.player("black", false);
+			this.playerInTurn = this.player1;
 
 			// initiates empty board by pushing 
 			this.initiate = function() {
@@ -91,12 +96,12 @@ angular.module('cuatro').factory('boardFactory', function() {
 						}
 					}
 				}
-				if(playedCells == 42) {
-					$scope.winner = "There is a tie, no";
-					$scope.game = false;
+				if(playedCells == 42) {	
+					return false;
 				}
 			};
-			this.winner = function (row, col, player) {
+			this.findWinner = function (row, col, player) {
+				this.playCount ++;
 				if(this.diagonalRightWin(row, col, player) ||
 					this.diagonalLeftWin(row, col, player)  ||
 					this.horizontalWin(row, col, player) ||
@@ -104,10 +109,45 @@ angular.module('cuatro').factory('boardFactory', function() {
 					return true;
 				}
  			};
- 		}
+ 			this.turn = function () {
+				if(this.playCount % 2 === 0){
+					// red player
+					this.playerInTurn = this.player1;
+				} else {
+					// black player
+					this.playerInTurn = this.player2;
+				}
+	 		};
+
+	 		// when a column is clicked it will place the current player's color
+	 		// in the lowest cell possible of that column
+	 		this.lowestCellinCol = function (col) {
+	 			for (var i = 5; i >= 0; i--) {
+	 				if(this.winner === null) {
+	 					if($("#row" + i +  " .col"+ col).hasClass("empty")) {
+	 						// displays in dom
+	 						$("#row" + i +  " .col"+ col).css('background-color', this.playerInTurn.color).removeClass("empty").addClass(this.playerInTurn.color);
+	 						// puts into array board to be used for winner function 
+	 						this.gameBoard[i][col] = this.playerInTurn.color;
+	 						// checks if the current move is a winning one
+	 						if(this.findWinner(i, col, this.playerInTurn.color)) {
+	 							// if there is a winner set it to the current player because this is checked on every turn
+	 							this.winner = this.playerInTurn.color;
+	 							
+	 						}
+	 						// changes the turn
+	 						this.turn();
+	 						$('.turn-text').css('color', this.playerInTurn.color);
+	 						return;
+	 					}
+	 				}
+	 			}
+	 		};
+	 	}
+
 	return {
 	  	Board:Board
 	};
-});
+}]);
  
 	 
