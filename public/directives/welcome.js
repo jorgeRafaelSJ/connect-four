@@ -1,7 +1,7 @@
-angular.module('cuatro').directive('boardContainer', function() {
+angular.module('cuatro').directive('welcomeContainer', function() {
       return {
           restrict: 'E',
-          templateUrl: 'templates/board.html',
+          templateUrl: 'templates/welcome.html',
           controller: 'GameController',
           controllerAs: 'game'
       };

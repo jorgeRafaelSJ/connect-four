@@ -6,17 +6,19 @@ html,body, div{
 	font-family: 'Open Sans', sans-serif;
 }
 .main-view {
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 	background-color: rgba(174, 188, 33,0.3);
 	padding-bottom: 50px;
 }
 /*table and board*/
 .table { 
-	width: 625px;
+	width: 95vw;
+	height:45vh;
 	background-color: #F8DA3B;
 }
 .board {
-	margin-top: 70px !important;
+	margin-top: 20px;
 	vertical-align: center;
 }
 td {
@@ -29,22 +31,12 @@ td {
 	border-color: #F8DA3B !important;
 }
 
-/*dynamic game classes*/
+/*dynamic game board classes*/
 .red { 
 	background-color: red; 
 }
 .black { 
 	background-color: black; 
-}
-.turn-text {
-	color: red;
-	margin-top: 45px;
-}
-.red-winner {
-	color: red;
-}
-.black-winner {
-	color: black;
 }
 
 /*blue borders on side of board*/
@@ -64,8 +56,8 @@ td.col6 {
 	margin-left: 0px;
 }
 .title {
-	margin-top: 25px;
-	font-size: 38px;
+	margin-top: 15px;
+	font-size: 60px;
 	color: #00B6EB;
 }
 .git-hub {
@@ -83,8 +75,8 @@ a {
 	color: #333 !important;
 }
 .btn-default {
-	margin-top: 10px;
-	font-size: 16px;
+	margin-top: 20px !important;
+	font-size: 28px;
 	background-color: rgb(174, 188, 33);
 	border: 1px solid #00B6EB;
 	border-radius: 0px;
@@ -98,34 +90,84 @@ a {
 }
 
 /*Left side and right side of the board*/
+.welcome-title {
+	font-size: 45px;
+	margin-top: 20px;
+}
+.welcome-subtitle {
+	font-size: 28px;
+	margin-top: 20px;
+}
+.turn-text {
+	color: red;
+	font-size: 50px;
+	margin-top: 20px;
+}
 .instructions {
-	margin-top: 70px;
+	margin-top: 20px;
 }
 .left-dashboard {
-	margin-top: 70px;
+	margin-top: 20px;
 	text-align: center;
 }
 ul {
 	list-style: none;
 	padding-left: 0;
 }
-li {
+.rules-title {
+	font-size: 18px !important;
+}
+.rules-item {
 	margin-top: 5px;
-	font-size: 12px;
+	font-size: 10px !important;
 }
 .hovering {
 	border-left: 3px solid #444 !important;
 	border-right: 3px solid #444 !important;	
 }
-@media(max-width: 1000px) {
-	.title {
-		font-size: 30px;
-		margin-top: 30px;
+
+/*iPhone 6 plus*/
+@media(min-width: 414px) {
+	.welcome-title {
+		margin-top: 50px;
+	}
+	.turn-text {
+		margin-top: 40px;
 	}
 }
-@media(max-width: 800px) {
-	.title {
-		font-size: 25px;
-		margin-top: 33px;
+
+/*iPad Mini*/
+@media(min-width: 768px) {
+	.rules-title {
+		font-size: 45px !important;
 	}
+	.rules-item {
+		font-size: 22px !important;
+	}
+}
+@media(min-width: 940px) {
+	
+}
+/*medium size screen*/
+@media(min-width: 992px) {
+	.table {
+		width: 60vw;
+	}
+	.board {
+		margin-top: 70px;
+	}
+	.instructions {
+		margin-top: 70px;
+	}
+	.left-dashboard {
+		margin-top: 70px;
+	}
+	.turn-text {
+		margin-top: 45px;
+	}
+/*large size screen*/
+@media(min-width: 1199px) {
+	.table {
+		width: 47vw;
+	}	
 }

@@ -6,7 +6,7 @@ angular.module('cuatro', ['ui.router'])
     $stateProvider
       	.state('game', {
         	url: "/",
-        	templateUrl: 'templates/game',
+        	templateUrl: 'templates/main_view',
         	controller: 'GameController'
       	});
   
