@@ -1,0 +1,16 @@
+<div class="welcome-container left-dashboard col-lg-3 col-md-2 col-sm-12">
+    
+    <h3>Welcome to <b>Cuatro</b></h3>
+
+    <p>Be the first player to get four of your checkers in a row - horizontally, vertically or diagonally.</p>
+
+    <div ng-hide="game" class="col-xs-12">
+         <h2 class="{{winner}}-winner">{{winner}} player wins!</h2>
+         <button class="btn btn-default" ng-click="playAgain()">Play Again</button>
+    </div>
+
+    <div ng-show="game" class="col-xs-12">
+         <h2 class="turn-text">{{player}} player's turn</h2>
+    </div>
+
+</div>    

@@ -22,16 +22,16 @@ Things I need to learn more about:
 
 GameController - interacts with the board. Has the following functions:
 	
-	* makeMove - places the move on the board object and checks for winner
-	* playAgain - resets the board view and starts a new instance of the board factory
-	* hovering - adds css borders to the column being hovered
+	makeMove - places the move on the board object and checks for winner
+	playAgain - resets the board view and starts a new instance of the board factory
+	hovering - adds css borders to the column being hovered
 
 ##### services: 
 
-	* playerFactory - constructor for player instances.  
-	* boardFactory - has functions to create a new board intance, players, find winners, and change turns.
-	* colHover (service) - has function to add hovering class to column on ngHover. 
-	* playAgain (service) - has function that resets the view board.
+	playerFactory - constructor for player instances.  
+	boardFactory - has functions to create a new board intance, players, find winners, and change turns.
+	colHover (service) - has function to add hovering class to column on ngHover. 
+	playAgain (service) - has function that resets the view board.
 
 
 
