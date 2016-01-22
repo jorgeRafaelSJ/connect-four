@@ -33,6 +33,12 @@ GameController - interacts with the board. Has the following functions:
 	colHover (service) - has function to add hovering class to column on ngHover. 
 	playAgain (service) - has function that resets the view board.
 
+##### directives: 
+
+	board-container - has the table for the game
+	rules-container - game rules
+	welcome-container - welcome text and turn information
+
 
 
 
