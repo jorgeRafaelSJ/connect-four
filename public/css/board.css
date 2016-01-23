@@ -13,8 +13,8 @@ html,body, div{
 }
 /*table and board*/
 .table { 
-	width: 95vw;
-	height:45vh;
+	width: 85vw;
+	height: 30px;
 	background-color: #F8DA3B;
 }
 .board {
@@ -22,8 +22,8 @@ html,body, div{
 	vertical-align: center;
 }
 td {
-	height: 80px;
-	width: 89px; 
+	height: 6vh;
+	width: 8vw; 
 	-moz-border-radius: 200px; 
 	-webkit-border-radius: 200px; 
 	border-radius: 200px; 
@@ -41,23 +41,23 @@ td {
 
 /*blue borders on side of board*/
 td.col0 {
-	border-left: 10px solid #00B6EB !important;
+	border-left: 3px solid #00B6EB !important;
 }
 td.col6 {
-	border-right: 10px solid #00B6EB !important;
+	border-right: 3px solid #00B6EB !important;
 }
 
 /*Top Bar and Footer*/
 .top-bar {
 	text-align: center;
-	height: 100px;
+	height: 80px;
 	border-bottom: 1px solid #00B6EB;
 	background-color: rgba(174, 188, 33,0.5);
 	margin-left: 0px;
 }
 .title {
-	margin-top: 15px;
-	font-size: 60px;
+	margin-top: 20px;
+	font-size: 30px;
 	color: #00B6EB;
 }
 .git-hub {
@@ -76,7 +76,7 @@ a {
 }
 .btn-default {
 	margin-top: 20px !important;
-	font-size: 28px;
+	font-size: 15px;
 	background-color: rgb(174, 188, 33);
 	border: 1px solid #00B6EB;
 	border-radius: 0px;
@@ -91,16 +91,16 @@ a {
 
 /*Left side and right side of the board*/
 .welcome-title {
-	font-size: 45px;
+	font-size: 16px;
 	margin-top: 20px;
 }
 .welcome-subtitle {
-	font-size: 28px;
+	font-size: 12px;
 	margin-top: 20px;
 }
 .turn-text {
 	color: red;
-	font-size: 50px;
+	font-size: 15px;
 	margin-top: 20px;
 }
 .instructions {
@@ -115,11 +115,11 @@ ul {
 	padding-left: 0;
 }
 .rules-title {
-	font-size: 18px !important;
+	font-size: 18px;
 }
 .rules-item {
 	margin-top: 5px;
-	font-size: 10px !important;
+	font-size: 10px;
 }
 .hovering {
 	border-left: 3px solid #444 !important;
@@ -127,34 +127,65 @@ ul {
 }
 
 /*iPhone 6 plus*/
-@media(min-width: 414px) {
+@media(min-width: 413px) {
 	.welcome-title {
-		margin-top: 50px;
+		margin-top: 10px;
 	}
 	.turn-text {
-		margin-top: 40px;
+		margin-top: 10px;
 	}
 }
 
-/*iPad Mini*/
+/*iPad Mini & iPad*/
 @media(min-width: 768px) {
+	.welcome-title {
+		font-size: 24px;
+	}
+	.welcome-subtitle {
+		font-size: 14px;
+	}
+	.turn-text {
+		font-size: 22px;
+	}
 	.rules-title {
-		font-size: 45px !important;
+		font-size: 22px;
 	}
 	.rules-item {
-		font-size: 22px !important;
+		font-size: 14px;
+	}
+	td {
+		height: 10vh;
+		width: 8vw; 
+	}
+	td.col0 {
+		border-left: 7px solid #00B6EB !important;
+	}
+	td.col6 {
+		border-right: 7px solid #00B6EB !important;
 	}
 }
-@media(min-width: 940px) {
-	
+@media(min-width: 850px) {
+	td{
+		height: 12vh;
+	}
 }
 /*medium size screen*/
 @media(min-width: 992px) {
 	.table {
 		width: 60vw;
 	}
+	td {
+		height: 11vh;
+	}
 	.board {
 		margin-top: 70px;
+	}
+	td.col0 {
+		border-left: 9px solid #00B6EB !important;
+	}
+	td.col6 {
+		border-right: 9px solid #00B6EB !important;
+	}
 	}
 	.instructions {
 		margin-top: 70px;
@@ -164,6 +195,21 @@ ul {
 	}
 	.turn-text {
 		margin-top: 45px;
+	}
+	.welcome-title {
+		font-size: 20px;
+	}
+	.welcome-subtitle {
+		font-size: 15px;
+	}
+	.rules-title {
+		font-size: 20px; 
+	}
+	.rules-item {
+		font-size: 12px; 
+	}
+	.btn-default {
+		font-size: 14px;
 	}
 /*large size screen*/
 @media(min-width: 1199px) {

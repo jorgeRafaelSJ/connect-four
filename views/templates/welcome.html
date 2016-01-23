@@ -1,12 +1,13 @@
 <div class="welcome-container left-dashboard col-lg-3 col-md-2 col-sm-12">
-    
-    <h3 class="welcome-title">Welcome to Cuatro </h3>
+    <div>
+	    <h3 class="welcome-title">Welcome to Cuatro </h3>
 
-    <p class="welcome-subtitle">Be the first player to get four of your checkers in a row - horizontally, vertically or diagonally.</p>
+	    <p class="welcome-subtitle">Be the first player to get four of your checkers in a row - horizontally, vertically or diagonally.</p>
+	</div>
 
     <div ng-hide="game" class="col-xs-12">
-         <h2 class="{{winner}}-winner">{{winner}} player wins!</h2>
-         <button class="btn btn-default" ng-click="playAgain()">Play Again</button>
+         <span><h2 class="{{winner}}-winner">{{winner}} player wins!</h2>
+         <button class="btn btn-default" ng-click="playAgain()">Play Again</button></span>
     </div>
 
     <div ng-show="game" class="col-xs-12">
