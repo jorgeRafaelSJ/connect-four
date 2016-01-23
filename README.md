@@ -15,7 +15,7 @@ Things I need to learn more about:
 
 * Difference between using $scope or setting variables to 'this' on the controller. I can see that when you set the controller 'as something' in html, then you can access the same variables as 'something.variable'
 
-* Need to understand how to implement ng-repeat tracking by index to make the board html smaller
+* Need to understand how to implement ng-repeat tracking by index to make the board/table html more concise
 
 
 ##### controllers:
