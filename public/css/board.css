@@ -38,6 +38,12 @@ td {
 .black { 
 	background-color: black; 
 }
+.red-winner {
+	color: red;
+}
+.black-winner {
+	color: black;
+}
 
 /*blue borders on side of board*/
 td.col0 {
@@ -90,6 +96,9 @@ a {
 }
 
 /*Left side and right side of the board*/
+.welcome-container {
+	margin-top: 10px !important;
+}
 .welcome-title {
 	font-size: 16px;
 	margin-top: 20px;
@@ -138,6 +147,9 @@ ul {
 
 /*iPad Mini & iPad*/
 @media(min-width: 768px) {
+	.welcome-container {
+		margin-top: 70px !important;
+	}
 	.welcome-title {
 		font-size: 24px;
 	}
@@ -203,7 +215,8 @@ ul {
 		font-size: 15px;
 	}
 	.rules-title {
-		font-size: 20px; 
+		font-size: 20px;
+		margin-top: 10px; 
 	}
 	.rules-item {
 		font-size: 12px; 
