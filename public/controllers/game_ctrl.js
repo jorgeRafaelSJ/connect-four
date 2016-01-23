@@ -29,7 +29,9 @@ angular.module('cuatro')
 		};
 
 		$scope.hovering = function(col) {
-			colHover.hovering(col);
+			if(screen.width > 800) {
+				colHover.hovering(col);
+			}
 		};		
 }]);
 
