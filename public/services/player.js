@@ -1,8 +1,7 @@
 angular.module('cuatro').factory('playerFactory', [ function() {
 
-  function player (color, first) {
+  function player (color) {
     this.color = color;
-    this.first = first;
   }
   
   return {

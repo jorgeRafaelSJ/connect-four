@@ -107,6 +107,9 @@ a {
 	font-size: 12px;
 	margin-top: 20px;
 }
+.winner {
+	font-size: 15px;
+}
 .turn-text {
 	color: red;
 	font-size: 15px;
@@ -155,6 +158,9 @@ ul {
 	}
 	.welcome-subtitle {
 		font-size: 14px;
+	}
+	.winner {
+		font-size: 22px;
 	}
 	.turn-text {
 		font-size: 22px;
