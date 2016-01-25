@@ -7,8 +7,8 @@ angular.module('cuatro').factory('boardFactory',['playerFactory', function(playe
 			this.columns = columns;
 			this.playCount = 0;
 			this.winner = null;
-			this.player1 = new playerFactory.player("red", true);
-			this.player2 = new playerFactory.player("black", false);
+			this.player1 = new playerFactory.player("red");
+			this.player2 = new playerFactory.player("black");
 			this.playerInTurn = this.player1;
 
 			// initiates empty board by pushing 

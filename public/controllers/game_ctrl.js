@@ -1,38 +1,45 @@
 angular.module('cuatro')
-	.controller('GameController', ['$scope','boardFactory', 'playAgain', 'colHover', function ($scope, boardFactory, playAgain, colHover) {
+	.controller('GameController', ['$scope', 'boardFactory', 'playAgain', 'colHover', function ($scope, boardFactory, playAgain, colHover) {
+		var vm = this;
 		// red starts the game
-		$scope.player = "red";
-		$scope.winner = null;
-		$scope.game = true;
-		var board = new boardFactory.Board(7,6);
-		board.initiate();
+		vm.player = "red";
+		vm.winner = null;
+		vm.game = true;
+		vm.board = new boardFactory.Board(7,6);
+		vm.board.initiate();
+		vm.gameBoard = vm.board.gameBoard;
+
+		vm.setClass = function (index) {
+			console.log(".col" + index);
+		 return ".col" + index;
+		};
 
 		// goes off when the player clicks on a column
-		$scope.makeMove = function (col) {
-			board.lowestCellinCol(col);
-			$scope.player = board.playerInTurn.color;
-			if(board.winner){
-				$scope.game = false;
-				$scope.winner = board.winner;
+		vm.makeMove = function (col) {
+			vm.board.lowestCellinCol(col);
+			vm.player = vm.board.playerInTurn.color;
+			if(vm.board.winner){
+				vm.game = false;
+				vm.winner = vm.board.winner;
 			}
 		};
 
 		// resets board and turns in the object
-		$scope.playAgain = function() {
+		vm.playAgain = function() {
 			// resets board on the dom
 			playAgain.reset();
-			$scope.player = "red";
-			$scope.game = true;
+			vm.player = "red";
+			vm.game = true;
 			// makes new instance of board / new game
-			board = new boardFactory.Board(7,6);
-			board.initiate();
+			vm.board = new boardFactory.Board(7,6);
+			vm.board.initiate();
 		};
 
-		$scope.hovering = function(col) {
+		vm.hovering = function(col) {
 			if(screen.width > 800) {
 				colHover.hovering(col);
 			}
-		};		
+		};	
 }]);
 
 
